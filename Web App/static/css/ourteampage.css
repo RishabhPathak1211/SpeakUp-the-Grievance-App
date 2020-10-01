@@ -48,7 +48,7 @@
 .team-section{
   overflow: hidden;
   text-align: center;
-  background: url(ourtew.png) no-repeat;
+  background: url('/static/img/ourtew.png') no-repeat;
   background-size: cover;
   height: 100vh;
   padding: 60px;

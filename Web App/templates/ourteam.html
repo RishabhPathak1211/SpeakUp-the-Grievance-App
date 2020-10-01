@@ -3,18 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Our team</title>
-    <link rel="stylesheet" href="css/ourteampage.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ourteampage.css') }}">
   </head>
   <body>
     <div class="wrapper">
       <nav class="navbar">
 
         <ul>
-          <li><a  href="C:\Users\dell\Documents\webdev\home.html">Home</a></li>
+          <li><a  href="{{ url_for('home') }}">Home</a></li>
           <li><a href="#">About</a></li>
-          <li><a  href="#">Login</a></li>
+          <li><a  href="{{ url_for('login') }}">Login</a></li>
           <li><a class="active" href="#">Our Team</a></li>
-          <li><a href="C:\Users\dell\Documents\webdev\contact.html">Contact</a></li>
+          <li><a href="{{ url_for('contactUs') }}">Contact</a></li>
 
         </ul>
       </nav>
@@ -23,10 +23,10 @@
   <h1>Our Team</h1>
   <span class="border"></span>
 <div class="ps">
-  <a href="#p1"><img src="C:\Users\dell\Documents\webdev\CSS\Glen.png" alt=""></a>
-  <a href="#p2"><img src="C:\Users\dell\Documents\webdev\CSS\rishabh.png" alt=""></a>
-  <a href="#p3"><img src="C:\Users\dell\Documents\webdev\CSS\pranjal.png" alt=""></a>
-  <a href="#p4"><img src="C:\Users\dell\Documents\webdev\CSS\Shraddhag.png" alt=""></a>
+  <a href="#p1"><img src="{{ url_for('static', filename='img/Glen.png') }}" alt=""></a>
+  <a href="#p2"><img src="{{ url_for('static', filename='img/rishabh.png') }}" alt=""></a>
+  <a href="#p3"><img src="{{ url_for('static', filename='img/pranjal.png') }}" alt=""></a>
+  <a href="#p4"><img src="{{ url_for('static', filename='img/Shraddhag.png') }}" alt=""></a>
 </div>
 
 <div class="section" id="p1">

@@ -4,7 +4,7 @@
 
 }
 .wrapper{
-  background: url(UMB.png) no-repeat;
+  background: url('/static/img/UMB.png') no-repeat;
   background-size: cover;
   height: 100vh;
 

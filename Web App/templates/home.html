@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8" >
   <title>Home</title>
-  <link rel="stylesheet" href="css/homey.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/homey.css') }}">
 </head>
 <body>
   <div class="wrapper">
     <nav class="navbar">
-      <img class="logo" src="C:\Users\dell\Documents\webdev\CSS\logo.jpeg"/>
+      <img class="logo" src="{{ url_for('static', filename='img/logo.jpeg') }}"/>
       <ul>
         <li><a class="active" href="#">Home</a></li>
         <li><a href="#">About</a></li>
-        <li><a href="C:\Users\dell\Documents\webdev\hinex.html">Login</a></li>
-        <li><a href="C:\Users\dell\Documents\webdev\ourteam.html">Our Team</a></li>
-        <li><a href="C:\Users\dell\Documents\webdev\contact.html">Contact</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('ourTeam') }}">Our Team</a></li>
+        <li><a href="{{ url_for('contactUs') }}">Contact</a></li>
 
       </ul>
     </nav>

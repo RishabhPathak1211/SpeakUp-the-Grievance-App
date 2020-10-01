@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Login Form design</title>
-    <link rel="stylesheet"  href="css/stylery.css" >
+    <link rel="stylesheet"  href="{{ url_for('static', filename='css/stylery.css') }}" >
 
 
 <body>
@@ -9,17 +9,17 @@
     <nav class="navbar">
 
       <ul>
-        <li><a  href="C:\Users\dell\Documents\webdev\home.html">Home</a></li>
+        <li><a  href="{{ url_for('home') }}">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a class="active" href="#">Login</a></li>
-        <li><a href="C:\Users\dell\Documents\webdev\ourteam.html">Our Team</a></li>
-        <li><a href="C:\Users\dell\Documents\webdev\contact.html">Contact</a></li>
+        <li><a href="{{ url_for('ourTeam') }}">Our Team</a></li>
+        <li><a href="{{ url_for('contactUs') }}">Contact</a></li>
 
       </ul>
     </nav>
   </div>
   <div class="loginbox">
-  <img  src="CSS\yg.png" class="avatar"/>
+  <img  src="{{ url_for('static', filename='img/yg.png') }}" class="avatar"/>
     <h1>Login form</h1>
     <form>
       <p>College Name</p>

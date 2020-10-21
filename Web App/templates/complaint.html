@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Complaint Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/mycomplaint.css') }}">
+</head>
+<body>
+
+  <nav>
+    <p id="new">Categories</p>
+    <ul id="menu1">
+      <li><a href="{{ url_for('complaintlist', category='Hostel') }}" class="active">Hostel  <span>{{ count['hostelcount'] }}</span></a></li>
+      <li><a href="{{ url_for('complaintlist', category='Academics') }}">Academics <span>{{ count['academicscount'] }}</span></a></li>
+      <li><a href="{{ url_for('complaintlist', category='Finance') }}">Finance <span>{{ count['financecount'] }}</span></a></li>
+      <li><a href="{{ url_for('complaintlist', category='Mess') }}">Mess <span>{{ count['messcount'] }}</span></a></li>
+    </ul>
+  </nav>
+
+  <section id="listview">
+
+    <header>
+      <input type="text" placeholder="Search">
+      <button>
+        find
+      </button>
+    </header>
+    
+    {% for comps in comp_lst %}
+    <div id="content">
+      <div class="item active">
+        <span class="avatar"></span>
+        <div class="desc">
+          <h2><a href="{{ url_for('complaint', category=comps['dept'], complaint_id=comps['_id']) }}">{{ comps['_id'] }}</a></h2>
+          <p>{{ comps['dept'] }}</p>
+          <p>{{ comps['comp'] }}</p>
+      </div>
+      <span class="time">11:00 PM</span>
+    </div>
+    {% endfor %}
+
+  </section>
+
+  <section id="view">
+    <header>
+      <div class="wrapper">
+        <nav class="navbar">
+
+          <ul>
+            <li><a  href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a class="active" href="#">Login</a></li>
+            <li><a href="{{ url_for('ourTeam') }}">Our Team</a></li>
+            <li><a href="{{ url_for('contactUs') }}">Contact</a></li>
+          </ul>
+
+        </nav>
+      </div>
+    </header>
+    {% for myc in mycomp %}
+    <div class="content">
+      <div class="header">
+        <span class="avatar"></span>
+        <span class="name">{{ myc['_id'] }}</span>
+        <span class="time">October 16,2020</span>
+      </div>
+    </div>
+
+    <div class="body">
+      <h1></h1>
+      <P><b>{{ myc['dept'] }}</b></p>
+      <p>{{ myc['comp'] }}</p>
+    </div>
+    {% endfor %}
+
+    <button class="reply">REPLY</button>
+    <div class="buttonss">
+      <p>UPDATE CATEGORY</p>
+      <button>Acdemic</button>
+      <button>Finance</button>
+      <button>Mess</button>
+      <button class="btn">No</button>
+
+
+    </div>
+    <div class="buttons">
+      <p>CONFIRM</p>
+      <button>Yes</button>
+      <button class="btn">No</button>
+
+
+    </div>
+
+
+  </section>
+</body>
+</html>

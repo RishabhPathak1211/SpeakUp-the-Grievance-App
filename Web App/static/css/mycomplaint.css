@@ -1,0 +1,316 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+nav, div, header, section, footer{
+  box-sizing: border-box;
+}
+nav{
+  z-index: 3;
+  position: relative;
+  float: left;
+  width: 20%;
+  background: #fff;
+  box-shadow: 0 1px 40px 0 #ccc;
+  height:100vh;
+
+}
+nav #new {
+  display: block;
+  background: #ff5A60;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+
+
+}
+ul#menu1 {
+  text-align: left;
+  list-style-type: none;
+  padding: 0;
+  margin: 30px 0;
+
+
+}
+
+ul#menu1 li {
+  display: block;
+
+}
+ul#menu1 li a{
+  display: block;
+  padding: 10px 0;
+  padding-left: 40px;
+  text-decoration: none;
+  color: #777;
+  position: relative;
+
+
+}
+ .active {
+  font-weight: bolder;
+}
+li a span{
+  background: #00B6FD;
+  border-radius: 20px;
+  padding: 5px 8px;
+  color: #fff;
+  font-family: monospace;
+  position: absolute;
+  right: 30px;
+
+
+}
+section#listview {
+  position: relative;
+  z-index: 2;
+  float: left;
+  box-shadow: 0 1px 1px 0 #ccc;
+  width: 30%;
+  height: 100vh;
+
+
+
+}
+section#listview header{
+  box-shadow: 0 1px 1px 0 #eee;
+  min-height: 65px;
+  max-height: 65px;
+  width: 100%;
+
+}
+section#listview header input{
+  width: 75%;
+  box-sizing: border-box;
+  padding: 18px;
+  font-size: 20px;
+  border: none;
+
+
+}
+section#listview header button{
+  background: #fff;
+
+  border: none;
+  box-sizing: border-box;
+  min-height: 60px;
+  max-height: 65px;
+  width: 20%;
+  padding: 15px 10px;
+  font-size: 15px;
+
+}
+input:focus, button:focus {
+  outline: none;
+
+}
+
+
+
+div#content div.item {
+  position: relative;
+
+  border-bottom: 1px solid #ccc;
+
+
+
+
+}
+  div.item::after  {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 3px;
+  background: transparent;
+  box-shadow: 0 2px 1px 0 #FF5A60;
+
+}
+
+
+div#content div.item span.avatar {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #ccc;
+  margin-left: 10px;
+  margin-top: 20px;
+  display: block;
+  border-radius: 100%;
+}
+div#content div.item div.desc {
+  padding-top: 20px;
+  padding-left: 20%;
+}
+div#content div.item div.desc h2{
+  margin: 20px;
+  color: #555;
+  font-weight: 500;
+
+}
+div#content div.item div.desc h6{
+  color: #999;
+  margin: 5px;
+  font-size: 20px;
+  font-weight: 400;
+
+
+}
+div#content div.item div.desc p{
+  color: #777;
+  font-weight: 400;
+  font-size: 14px;
+}
+div#content div.item div.desc span.time{
+  position: absolute;
+  top: 30;
+  right: 10;
+  color: #aaa;
+  font-family: monospace;
+
+
+}
+section#view{
+  position: relative;
+  z-index: 2;
+  float: left;
+  box-shadow: 0 1px 1px 0 #ccc;
+  width: 50%;
+  height: 100vh;
+
+}
+section#view header{
+  box-shadow: 0 1px 1px 0 #eee;
+  min-height: 65px;
+  max-height: 65px;
+  width: 100%;
+
+
+}
+section#view header .navbar
+{
+  height: 68px;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+}
+
+
+.navbar ul{
+  float: right;
+  margin-right: 20px;
+
+}
+.navbar ul li{
+  list-style: none;
+  margin: 0 8px;
+  display: inline-block;
+  line-height: 50px;
+}
+.navbar ul li a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 6px 13px;
+  font-family: sans-serif;
+  transition: .4s;
+
+}
+.navbar ul li a.active,
+.navbar ul li a:hover{
+  background: #F3B340;
+  border-radius: 2px;
+}
+sectione#view div.content{
+  padding: 10px;
+}
+
+section#view div.content div.header span.avatar {
+
+  width:60px;
+  height:60px;
+  display: inline-block;
+  background: #ccc;
+  border-radius: 100%;
+
+}
+section#view div.content div.header span.name {
+  font-weight: bolder;
+  position: relative;
+  top:-20px;
+  left: 20px;
+  display: inline-block;
+  color:#666;
+
+
+
+}
+section#view div.content div.header span.time{
+  color: #F3B340;
+  top: 98px;
+  right: 30px;
+  position: absolute;
+}
+section#view div.body {
+  padding: 10px;
+
+}
+section#view div.body b{
+  color: #333;
+}
+section#view div.body p{
+  color: #777;
+  font-size: 20px;
+}
+section#view button.reply {
+  padding: 10px 40px;
+  background: #FF5A60;
+  border: none;
+  color: #fff;
+  font-family: sans-serif;
+  position: absolute;
+  bottom: 230px;
+  left: 80%;
+}
+.buttonss{
+  margin: 5px 20px;
+}
+ .buttons{
+  margin: 5px 20px;
+
+}
+.buttons p{
+  font-weight: bolder;
+  font-style: italic;
+}
+.buttons button{
+  height: 50px;
+  width: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: #F3B340;
+  border: 1px solid #cc0000;
+  outline: none;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: .5s;
+
+}
+.buttons .btn{
+  margin-left: 25px;
+
+}
+
+.buttons button:hover{
+  background: #FF5A60;
+
+}
+
+
+
+
+hr.clearfix {
+  visibility: hidden;
+  clear: both;
+}

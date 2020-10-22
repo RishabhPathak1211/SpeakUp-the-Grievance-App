@@ -10,7 +10,7 @@
   <nav>
     <p id="new">Categories</p>
     <ul id="menu1">
-      <li><a href="{{ url_for('complaintlist', user=user, category='Hostel') }}" class="active">Hostel  <span>{{ count['hostelcount'] }}</span></a></li>
+      <li><a href="{{ url_for('complaintlist', user=user, category='Hostel') }}" class="active">Hostel <span>{{ count['hostelcount'] }}</span></a></li>
       <li><a href="{{ url_for('complaintlist', user=user, category='Academics') }}">Academics <span>{{ count['academicscount'] }}</span></a></li>
       <li><a href="{{ url_for('complaintlist', user=user, category='Finance') }}">Finance <span>{{ count['financecount'] }}</span></a></li>
       <li><a href="{{ url_for('complaintlist', user=user, category='Mess') }}">Mess <span>{{ count['messcount'] }}</span></a></li>
@@ -26,8 +26,8 @@
       </button>
     </header>
     
-    {% for comps in comp_lst %}
     <div id="content">
+    {% for comps in comp_lst %}    
       <div class="item active">
         <span class="avatar"></span>
         <div class="desc">
@@ -36,8 +36,8 @@
           <p>{{ comps['comp'] }}</p>
       </div>
       <span class="time">11:00 PM</span>
-    </div>
     {% endfor %}
+    </div>
 
   </section>
 
@@ -49,7 +49,7 @@
           <ul>
             <li><a  href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a class="active" href="#">Login</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
             <li><a href="{{ url_for('ourTeam') }}">Our Team</a></li>
             <li><a href="{{ url_for('contactUs') }}">Contact</a></li>
           </ul>

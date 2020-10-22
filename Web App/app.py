@@ -38,6 +38,11 @@ def login():
         return 'Invalid Username/Password Combination'
     return render_template('hinex.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('home'))
+
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
@@ -64,13 +69,14 @@ def contactUs():
 
 @app.route('/complaints/<user>')
 def complaints(user):
-    if not user:
-        return redirect('login')
-    print(user)
+    if user not in session.values():
+        return redirect(url_for('login'))
     return render_template('complaint.html', count=count, user=user)
 
 @app.route('/complaint/<user>/<category>')
 def complaintlist(user, category):
+    if user not in session.values():
+        return redirect(url_for('login'))
     comp_lst = []
     for x in col.find({'dept':category}):
         comp_lst.append(x)
@@ -78,6 +84,8 @@ def complaintlist(user, category):
 
 @app.route('/complaint/<user>/<category>/<complaint_id>')
 def complaint(user, category, complaint_id):
+    if user not in session.values():
+        return redirect(url_for('login'))
     comp_lst = []
     mycomp = []
     for x in col.find({'dept':category}):

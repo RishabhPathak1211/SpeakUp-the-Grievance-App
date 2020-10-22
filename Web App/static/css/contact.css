@@ -5,6 +5,7 @@
   font-family: sans-serif;
 
 }
+
 .navbar{
   height: 80px;
   width: 100%;
@@ -46,8 +47,8 @@
   user-select: none;
 }
 .contact{
-  position: absolute;
-  min-height: 100vh;
+  min-height: 91.5vh;
+  min-width: 100%;
   padding: 50px 100px;
   display: flex;
   justify-content: center;
@@ -55,7 +56,8 @@
   flex-direction: column;
   background: url('/static/img/LAPTOP.png');
   background-size: cover;
-
+  margin-left: 0;
+  margin-right: 0;
 }
 .contact .content
 {

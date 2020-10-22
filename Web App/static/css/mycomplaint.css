@@ -17,7 +17,7 @@ nav{
 }
 nav #new {
   display: block;
-  background: #ff5A60;
+  background: #333;
   padding: 20px;
   text-align: center;
   color: #fff;
@@ -72,8 +72,13 @@ section#listview {
   height: 100vh;
 
 
-
 }
+
+div#content {
+  height: 93vh;
+  overflow-y: scroll;
+}
+
 section#listview header{
   box-shadow: 0 1px 1px 0 #eee;
   min-height: 65px;
@@ -118,16 +123,6 @@ div#content div.item {
 
 
 }
-  div.item::after  {
-  content: "";
-  display: block;
-  width: 50%;
-  height: 3px;
-  background: transparent;
-  box-shadow: 0 2px 1px 0 #FF5A60;
-
-}
-
 
 div#content div.item span.avatar {
   position: absolute;

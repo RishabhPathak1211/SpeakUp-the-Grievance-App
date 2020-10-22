@@ -10,10 +10,10 @@
   <nav>
     <p id="new">Categories</p>
     <ul id="menu1">
-      <li><a href="{{ url_for('complaintlist', category='Hostel') }}" class="active">Hostel  <span>{{ count['hostelcount'] }}</span></a></li>
-      <li><a href="{{ url_for('complaintlist', category='Academics') }}">Academics <span>{{ count['academicscount'] }}</span></a></li>
-      <li><a href="{{ url_for('complaintlist', category='Finance') }}">Finance <span>{{ count['financecount'] }}</span></a></li>
-      <li><a href="{{ url_for('complaintlist', category='Mess') }}">Mess <span>{{ count['messcount'] }}</span></a></li>
+      <li><a href="{{ url_for('complaintlist', user=user, category='Hostel') }}" class="active">Hostel  <span>{{ count['hostelcount'] }}</span></a></li>
+      <li><a href="{{ url_for('complaintlist', user=user, category='Academics') }}">Academics <span>{{ count['academicscount'] }}</span></a></li>
+      <li><a href="{{ url_for('complaintlist', user=user, category='Finance') }}">Finance <span>{{ count['financecount'] }}</span></a></li>
+      <li><a href="{{ url_for('complaintlist', user=user, category='Mess') }}">Mess <span>{{ count['messcount'] }}</span></a></li>
     </ul>
   </nav>
 
@@ -31,7 +31,7 @@
       <div class="item active">
         <span class="avatar"></span>
         <div class="desc">
-          <h2><a href="{{ url_for('complaint', category=comps['dept'], complaint_id=comps['_id']) }}">{{ comps['_id'] }}</a></h2>
+          <h2><a href="{{ url_for('complaint', user=user, category=comps['dept'], complaint_id=comps['_id']) }}">{{ comps['_id'] }}</a></h2>
           <p>{{ comps['dept'] }}</p>
           <p>{{ comps['comp'] }}</p>
       </div>

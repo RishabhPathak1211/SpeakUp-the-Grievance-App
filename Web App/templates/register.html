@@ -9,7 +9,7 @@
     <nav class="navbar">
 
       <ul>
-        <li><a  href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
         <li><a href="#">About</a></li>
         <li><a class="active" href="#">Login</a></li>
         <li><a href="{{ url_for('ourTeam') }}">Our Team</a></li>
@@ -20,15 +20,15 @@
   </div>
   <div class="loginbox">
   <img  src="{{ url_for('static', filename='img/yg.png') }}" class="avatar"/>
-    <h1>Login form</h1>
-    <form method="POST" action="{{ url_for('login') }}">
+    <h1>Registration form</h1>
+    <form method="POST" action="{{ url_for('register') }}">
       <p>College Name</p>
       <input type="text" name="username" placeholder="Enter College Name" required>
       <p>Password</p>
       <input type="password" name="password" placeholder="Enter password" required>
-      <input type="submit" name="" value="Login">
-      <a href="#">Lost your password?</a><br>
-      <a href="{{ url_for('register') }}">Don't have an account?</a>
+      <p>Address</p>
+      <input type="text" name="address" placeholder="Enter Address" required>
+      <input type="submit" name="" value="Register">
     </form>
   </div>
 

@@ -21,13 +21,15 @@
   <div class="loginbox">
   <img  src="{{ url_for('static', filename='img/yg.png') }}" class="avatar"/>
     <h1>Registration form</h1>
-    <form method="POST" action="{{ url_for('register') }}">
+    <form method="POST" action="{{ url_for('register') }}" enctype="multipart/form-data">
       <p>College Name</p>
       <input type="text" name="username" placeholder="Enter College Name" required>
       <p>Password</p>
       <input type="password" name="password" placeholder="Enter password" required>
       <p>Address</p>
       <input type="text" name="address" placeholder="Enter Address" required>
+      <p>Student Info</p>
+      <input type="file" name="file" required>
       <input type="submit" name="" value="Register">
     </form>
   </div>

@@ -71,32 +71,31 @@ rf_as = accuracy_score(rf_y_pred, y_test)
 max_as = max(svm_as, nb_as, dt_as, rf_as)
 
 test = input()
-test_words = test.split()
-test_words = [stemmer.lemmatize(word) for word in test_words if word not in set(stopwords.words('english'))]
-test_words = ' '.join(test_words)
-test = [test_words]
-testx = vectorizer.transform(test).toarray()
-testx = transformer.transform(testx).toarray()
 
-category = ''
-model_used = ''
-if max_as == svm_as:
-    model_used = 'svm'
-    category = SVMclassifier.predict(testx)[0]
-elif max_as == nb_as:
-    model_used = 'naive bayes'
-    category = NBclassifier.predict(testx)[0]
-elif max_as == dt_as:
-    model_used = 'decision tree'
-    category = DTclassifier.predict(testx)[0]
-else:
-    model_used = 'random forest'
-    category = RFclassifier.predict(testx)[0]
+def classify(test):
+    test_words = test.split()
+    test_words = [stemmer.lemmatize(word) for word in test_words if word not in set(stopwords.words('english'))]
+    test_words = ' '.join(test_words)
+    test = [test_words]
+    testx = vectorizer.transform(test).toarray()
+    testx = transformer.transform(testx).toarray()
 
-print(category)
-print(model_used)
+    category = ''
+    model_used = ''
+    if max_as == svm_as:
+        model_used = 'svm'
+        category = SVMclassifier.predict(testx)[0]
+    elif max_as == nb_as:
+        model_used = 'naive bayes'
+        category = NBclassifier.predict(testx)[0]
+    elif max_as == dt_as:
+        model_used = 'decision tree'
+        category = DTclassifier.predict(testx)[0]
+    else:
+        model_used = 'random forest'
+        category = RFclassifier.predict(testx)[0]
 
-check = input('Was the prediction correct? ')
-if check == 'No':
-    category = input('What is the correct classification? ')
-print(category)
+    print(category)
+    print(model_used)
+
+classify(test)

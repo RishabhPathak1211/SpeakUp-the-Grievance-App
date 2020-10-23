@@ -2,6 +2,9 @@ from flask import Flask, url_for, render_template, session, request, redirect
 import pymongo
 from bson import ObjectId
 import bcrypt
+import pandas
+import xlrd
+import json
 
 client = pymongo.MongoClient('mongodb://localhost:27017/')
 db = client['ThirdSemProj']
@@ -50,8 +53,14 @@ def register():
         existing_user = users.find({'name': request.form['username']})
 
         if existing_user.count() == 0:
+            uploaded_file = pandas.read_excel(request.files['file'])
+            json_str = uploaded_file.to_json(orient='records')
+            student_data = json.loads(json_str)
+            for x in student_data:
+                x['Password'] = bcrypt.hashpw(x['Password'].encode('utf-8'), bcrypt.gensalt())
+
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert_one({'name': request.form['username'], 'password': hashpass, 'address': request.form['address']})
+            users.insert_one({'name': request.form['username'], 'password': hashpass, 'address': request.form['address'], 'student_lst': student_data})
             session['username'] = request.form['username']
             return redirect(url_for('complaints', user=session['username']))
 

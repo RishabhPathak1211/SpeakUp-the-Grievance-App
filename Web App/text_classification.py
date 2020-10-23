@@ -70,7 +70,7 @@ rf_as = accuracy_score(rf_y_pred, y_test)
 
 max_as = max(svm_as, nb_as, dt_as, rf_as)
 
-test = input()
+#test = input()
 
 def classify(test):
     test_words = test.split()
@@ -81,21 +81,13 @@ def classify(test):
     testx = transformer.transform(testx).toarray()
 
     category = ''
-    model_used = ''
     if max_as == svm_as:
-        model_used = 'svm'
         category = SVMclassifier.predict(testx)[0]
     elif max_as == nb_as:
-        model_used = 'naive bayes'
         category = NBclassifier.predict(testx)[0]
     elif max_as == dt_as:
-        model_used = 'decision tree'
         category = DTclassifier.predict(testx)[0]
     else:
-        model_used = 'random forest'
         category = RFclassifier.predict(testx)[0]
 
-    print(category)
-    print(model_used)
-
-classify(test)
+    return category

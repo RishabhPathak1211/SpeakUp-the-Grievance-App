@@ -31,9 +31,9 @@
       <div class="item active">
         <span class="avatar"></span>
         <div class="desc">
-          <h2><a href="{{ url_for('complaint', user=user, category=comps['dept'], complaint_id=comps['_id']) }}">{{ comps['_id'] }}</a></h2>
-          <p>{{ comps['dept'] }}</p>
-          <p>{{ comps['comp'] }}</p>
+          <h2><a href="{{ url_for('complaint', user=user, category=comps['Category'], complaint_id=comps['_id']) }}">{{ comps['Name'] }}</a></h2>
+          <p>{{ comps['Email'] }}</p>
+          <p>{{ comps['Subject'] }}</p>
       </div>
       <span class="time">11:00 PM</span>
     {% endfor %}
@@ -61,15 +61,16 @@
     <div class="content">
       <div class="header">
         <span class="avatar"></span>
-        <span class="name">{{ myc['_id'] }}</span>
+        <span class="name">{{ myc['Name'] }} | {{ myc['Institution'] }}</span>
         <span class="time">October 16,2020</span>
       </div>
     </div>
 
     <div class="body">
       <h1></h1>
-      <P><b>{{ myc['dept'] }}</b></p>
-      <p>{{ myc['comp'] }}</p>
+      <P><b>{{ myc['Category'] }}</b></p>
+      <p>{{ myc['Subject'] }}</p>
+      <p>{{ myc['Body'] }}</p>
     </div>
     {% endfor %}
 

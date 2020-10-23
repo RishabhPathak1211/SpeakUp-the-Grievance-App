@@ -5,20 +5,24 @@ import bcrypt
 import pandas
 import xlrd
 import json
+from text_classification import classify
 
 client = pymongo.MongoClient('mongodb://localhost:27017/')
 db = client['ThirdSemProj']
-col = db['Dataset']
+comps = db['Complaints']
 
-count = {'hostelcount': 0, 'academicscount': 0, 'financecount': 0, 'messcount': 0}
-for x in col.find({'dept':'Hostel'}):
-    count['hostelcount'] += 1
-for x in col.find({'dept':'Academics'}):
-    count['academicscount'] += 1
-for x in col.find({'dept':'Finance'}):
-    count['financecount'] += 1
-for x in col.find({'dept':'Mess'}):
-    count['messcount'] += 1
+for x in comps.find({'Category':''}):
+    id_x = x['_id']
+    body = x['Body']
+    comps.update_one({'_id':ObjectId(id_x)}, {'$set': {'Category':classify(body)}})
+
+def counts(col, user):
+    count = {'hostelcount': 0, 'academicscount': 0, 'financecount': 0, 'messcount': 0}
+    count['hostelcount'] = col.find({'Category':'Hostel', 'Institution':user}).count()
+    count['academicscount'] = col.find({'Category':'Academics', 'Institution':user}).count()
+    count['financecount'] = col.find({'Category':'Finance', 'Institution':user}).count()
+    count['messcount'] = col.find({'Category':'Mess', 'Institution':user}).count()
+    return count
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -83,16 +87,16 @@ def contactUs():
 def complaints(user):
     if user not in session.values():
         return redirect(url_for('login'))
-    return render_template('complaint.html', count=count, user=user)
+    return render_template('complaint.html', count=counts(comps, user), user=user)
 
 @app.route('/complaint/<user>/<category>')
 def complaintlist(user, category):
     if user not in session.values():
         return redirect(url_for('login'))
     comp_lst = []
-    for x in col.find({'dept':category}):
+    for x in comps.find({'Institution':user, 'Category':category}):
         comp_lst.append(x)
-    return render_template('complaint.html', category=category, comp_lst=comp_lst, count=count, user=user)
+    return render_template('complaint.html', category=category, comp_lst=comp_lst, count=counts(comps, user), user=user)
 
 @app.route('/complaint/<user>/<category>/<complaint_id>')
 def complaint(user, category, complaint_id):
@@ -100,11 +104,11 @@ def complaint(user, category, complaint_id):
         return redirect(url_for('login'))
     comp_lst = []
     mycomp = []
-    for x in col.find({'dept':category}):
+    for x in comps.find({'Institution':user, 'Category':category}):
         comp_lst.append(x)
-    for x in col.find({'_id':ObjectId(complaint_id)}):
+    for x in comps.find({'_id':ObjectId(complaint_id)}):
         mycomp.append(x)
-    return render_template('complaint.html', category=category, comp_lst=comp_lst, count=count, mycomp=mycomp, user=user)
+    return render_template('complaint.html', category=category, comp_lst=comp_lst, count=counts(comps, user), mycomp=mycomp, user=user)
 
 if  __name__ == "__main__":
     app.run()

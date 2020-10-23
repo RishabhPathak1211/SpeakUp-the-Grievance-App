@@ -29,17 +29,20 @@ def home():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    if request.method == 'POST':
-        users = db['Colleges']
-        login_user = users.find_one({'name': request.form['username']})
+    if len(session.values()) == 0:
+        if request.method == 'POST':
+            users = db['Colleges']
+            login_user = users.find_one({'name': request.form['username']})
 
-        if login_user:
-            if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password']) == login_user['password']:
-                session['username'] = request.form['username']
-                return redirect(url_for('complaints', user=session['username']))
+            if login_user:
+                if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password']) == login_user['password']:
+                    session['username'] = request.form['username']
+                    return redirect(url_for('complaints', user=session['username']))
 
-        return 'Invalid Username/Password Combination'
-    return render_template('hinex.html')
+            return 'Invalid Username/Password Combination'
+        return render_template('hinex.html')
+    else:
+        return redirect(url_for('complaints', user=session['username']))
 
 @app.route('/logout')
 def logout():

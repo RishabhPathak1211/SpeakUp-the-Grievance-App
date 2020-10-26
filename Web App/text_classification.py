@@ -17,9 +17,9 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-client = pymongo.MongoClient('mongodb://localhost:27017/')
-database = client['ThirdSemProj']
-collection = database['Dataset']
+client = pymongo.MongoClient("mongodb+srv://Rishabh_Pathak_12:speakup@cluster0.agd8b.mongodb.net/ThirdSemProj?retryWrites=true&w=majority")
+db = client['ThirdSemProj']
+collection = db['Dataset']
 
 complaintsdf = pandas.DataFrame(list(collection.find()))
 X, y = complaintsdf['comp'], complaintsdf['dept']

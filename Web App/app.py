@@ -7,7 +7,7 @@ import xlrd
 import json
 from text_classification import classify
 
-client = pymongo.MongoClient('mongodb://localhost:27017/')
+client = pymongo.MongoClient("mongodb+srv://Rishabh_Pathak_12:speakup@cluster0.agd8b.mongodb.net/ThirdSemProj?retryWrites=true&w=majority")
 db = client['ThirdSemProj']
 comps = db['Complaints']
 

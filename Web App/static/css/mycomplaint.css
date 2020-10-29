@@ -5,19 +5,23 @@ body{
 nav, div, header, section, footer{
   box-sizing: border-box;
 }
+div#str{
+
+  height: 100%;
+}
 nav{
   z-index: 3;
   position: relative;
   float: left;
   width: 20%;
-  background: #fff;
-  box-shadow: 0 1px 40px 0 #ccc;
+  background: #1B1B1B;
+  box-shadow: 0 0.5px 20px 0 #F3B340;
   height:100vh;
 
 }
 nav #new {
   display: block;
-  background: #333;
+  background: #F3B340;
   padding: 20px;
   text-align: center;
   color: #fff;
@@ -27,6 +31,7 @@ nav #new {
 
 }
 ul#menu1 {
+  background: #1B1B1B;
   text-align: left;
   list-style-type: none;
   padding: 0;
@@ -44,7 +49,7 @@ ul#menu1 li a{
   padding: 10px 0;
   padding-left: 40px;
   text-decoration: none;
-  color: #777;
+  color: #fff;
   position: relative;
 
 
@@ -53,7 +58,7 @@ ul#menu1 li a{
   font-weight: bolder;
 }
 li a span{
-  background: #00B6FD;
+  background: #cc0000;
   border-radius: 20px;
   padding: 5px 8px;
   color: #fff;
@@ -64,29 +69,27 @@ li a span{
 
 }
 section#listview {
+  background: #242424;
   position: relative;
   z-index: 2;
   float: left;
-  box-shadow: 0 1px 1px 0 #ccc;
+  box-shadow: 0 1px 1px 0 #F3B340;
   width: 30%;
   height: 100vh;
 
 
-}
 
-div#content {
-  height: 93vh;
-  overflow-y: scroll;
 }
-
 section#listview header{
-  box-shadow: 0 1px 1px 0 #eee;
+  background: #000000;
+  box-shadow: 0 1px 1px 0 #F3B340;
   min-height: 65px;
   max-height: 65px;
   width: 100%;
 
 }
 section#listview header input{
+  background: #000000;
   width: 75%;
   box-sizing: border-box;
   padding: 18px;
@@ -96,14 +99,13 @@ section#listview header input{
 
 }
 section#listview header button{
-  background: #fff;
-
+  background: #F3B340;
   border: none;
   box-sizing: border-box;
-  min-height: 60px;
-  max-height: 65px;
-  width: 20%;
-  padding: 15px 10px;
+  min-height: 10px;
+  max-height: 40px;
+  width: 15%;
+  padding: 10px 5px;
   font-size: 15px;
 
 }
@@ -123,6 +125,16 @@ div#content div.item {
 
 
 }
+  div.item::after  {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 3px;
+  background: transparent;
+  box-shadow: 0 2px 1px 0 #F3B340;
+
+}
+
 
 div#content div.item span.avatar {
   position: absolute;
@@ -134,18 +146,28 @@ div#content div.item span.avatar {
   display: block;
   border-radius: 100%;
 }
+div#content div.item span.avatar h1
+{
+  padding-left: 5.5px;
+  position: relative;
+  text-align: center;
+  line-height: 10px;
+  font-weight: bolder;
+  font-size: 30px;
+
+}
 div#content div.item div.desc {
   padding-top: 20px;
   padding-left: 20%;
 }
 div#content div.item div.desc h2{
   margin: 20px;
-  color: #555;
+  color: #fff;
   font-weight: 500;
 
 }
 div#content div.item div.desc h6{
-  color: #999;
+  color: #fff;
   margin: 5px;
   font-size: 20px;
   font-weight: 400;
@@ -153,20 +175,19 @@ div#content div.item div.desc h6{
 
 }
 div#content div.item div.desc p{
-  color: #777;
+  color: #fff;
   font-weight: 400;
   font-size: 14px;
 }
-div#content div.item div.desc span.time{
-  position: absolute;
-  top: 30;
-  right: 10;
-  color: #aaa;
+div#content span.time{
+  font-weight: bold;
+  color:#aaa;
   font-family: monospace;
 
 
 }
 section#view{
+  background: #2B2B2B;
   position: relative;
   z-index: 2;
   float: left;
@@ -187,7 +208,7 @@ section#view header .navbar
 {
   height: 68px;
   width: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.1);
 }
 
 
@@ -229,13 +250,23 @@ section#view div.content div.header span.avatar {
   border-radius: 100%;
 
 }
+section#view div.content div.header span.avatar h1
+{
+  padding-left: 5.5px;
+  position: relative;
+  text-align: center;
+  line-height: 10px;
+  font-weight: bolder;
+  font-size: 30px;
+
+}
 section#view div.content div.header span.name {
   font-weight: bolder;
   position: relative;
-  top:-20px;
+  top:-5px;
   left: 20px;
   display: inline-block;
-  color:#666;
+  color:#fff;
 
 
 
@@ -251,15 +282,15 @@ section#view div.body {
 
 }
 section#view div.body b{
-  color: #333;
+  color: #fff;
 }
 section#view div.body p{
-  color: #777;
+  color: #fff;
   font-size: 20px;
 }
 section#view button.reply {
   padding: 10px 40px;
-  background: #FF5A60;
+  background: #F3B340;
   border: none;
   color: #fff;
   font-family: sans-serif;
@@ -267,39 +298,79 @@ section#view button.reply {
   bottom: 230px;
   left: 80%;
 }
-.buttonss{
-  margin: 5px 20px;
-}
- .buttons{
-  margin: 5px 20px;
 
-}
-.buttons p{
-  font-weight: bolder;
-  font-style: italic;
-}
-.buttons button{
-  height: 50px;
-  width: 50px;
-  font-size: 18px;
+section#view .button p
+{
+  right: 5%;
+  font-size: 28px;
   font-weight: bold;
   color: white;
+}
+section#view div.dropdown {
+  position: absolute;
+  top: 68.30%;
+  left: 10%;
+  transform: (-50%,-50%);
+}
+section#view button.Yes{
+  left: 5%;
+  width: 70px;
+  height: 40px;
+  font-size: 14px;
   background: #F3B340;
-  border: 1px solid #cc0000;
+  border: none;
+  box-shadow: none;
   outline: none;
   cursor: pointer;
-  border-radius: 25px;
-  transition: .5s;
-
-}
-.buttons .btn{
-  margin-left: 25px;
-
+  color: #fff;
 }
 
-.buttons button:hover{
-  background: #FF5A60;
+section#view button.No{
+  width: 70px;
+  height: 40px;
+  font-size: 14px;
+  background: #F3B340;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+}
+section#view div.dropdown ul
+{
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #ccc;
+  transform-origin: top;
+  transform: perspective(1000px) rotateX(-90deg);
+  transition: 0.5s;
 
+}
+section#view div.dropdown ul.activess
+{
+  transform: perspective(1000px) rotateX(0deg);
+
+}
+section#view div.dropdown ul li
+{
+  list-style: none;
+
+}
+section#view div.dropdown ul li a
+{
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: #262626;
+  color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  transition: 0.5s;
+
+}
+section#view div.dropdown ul li a:hover{
+  background: #cc0000;
 }
 
 

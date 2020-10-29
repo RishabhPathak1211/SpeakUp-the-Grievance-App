@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/mycomplaint.css') }}">
 </head>
 <body>
-
+<div id="str">
   <nav>
     <p id="new">Categories</p>
     <ul id="menu1">
@@ -47,8 +47,8 @@
         <nav class="navbar">
 
           <ul>
-            <li><a  href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
             <li><a href="{{ url_for('logout') }}">Logout</a></li>
             <li><a href="{{ url_for('ourTeam') }}">Our Team</a></li>
             <li><a href="{{ url_for('contactUs') }}">Contact</a></li>
@@ -74,25 +74,36 @@
     </div>
     {% endfor %}
 
+    {% if temp is defined %}
     <button class="reply">REPLY</button>
-    <div class="buttonss">
-      <p>UPDATE CATEGORY</p>
-      <button>Acdemic</button>
-      <button>Finance</button>
-      <button>Mess</button>
-      <button class="btn">No</button>
+    <div class="button">
+        <form>
 
+        <p>Update category</p>
 
+        <button class="Yes">No</button>
+        </form>
+        <div class="dropdown">
+              <button class="No">Yes</button>
+              <ul class="activess">
+                <li><a href="#">Academic</a></li>
+                <li><a href="#">Finance</a></li>
+                <li><a href="#">Mess</a></li>
+              </ul>
+
+      </div>
     </div>
-    <div class="buttons">
-      <p>CONFIRM</p>
-      <button>Yes</button>
-      <button class="btn">No</button>
-
-
-    </div>
-
-
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('button.No').click(function(){
+            $('ul').toggleClass('activess')
+          })
+        })
+    </script>
+    {% endif %}
   </section>
+
+</div>
 </body>
 </html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" >
+  <title>Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/aboutuss.css') }}">
+</head>
+<body>
+  <div class="wrapper">
+    <nav class="navbar">
+      <img class="logo" src="{{ url_for('static', filename='img/logo.jpeg') }}"/>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a class="active" href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('ourTeam') }}">Our Team</a></li>
+        <li><a href="{{ url_for('contactUs') }}">Contact</a></li>
+
+      </ul>
+    </nav>
+    <div class="center">
+      <h1>SpeakUP:The Grievance App</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+         esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+         sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="buttons">
+        <button>Get in touch</button>
+
+       </div>
+
+    </div>
+
+
+
+  </div>
+
+</body>
+</html>

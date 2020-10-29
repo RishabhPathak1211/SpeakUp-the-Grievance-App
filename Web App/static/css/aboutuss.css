@@ -1,0 +1,92 @@
+*{
+  padding: 0;
+  margin: 0;
+
+}
+.wrapper{
+  background: url('/static/img/bg.png') no-repeat;
+  background-size: cover;
+  height: 100vh;
+
+}
+.navbar{
+  height: 80px;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+}
+.logo{
+  width: 400px;
+  height: 400px;
+  padding: 150px 50px;
+
+}
+.navbar ul{
+  float: right;
+  margin-right: 20px;
+
+}
+.navbar ul li{
+  list-style: none;
+  margin: 0 8px;
+  display: inline-block;
+  line-height: 80px;
+}
+.navbar ul li a{
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 6px 13px;
+  font-family: sans-serif;
+  transition: .4s;
+
+}
+.navbar ul li a.active,
+.navbar ul li a:hover{
+  background: #F3B340;
+  border-radius: 2px;
+}
+.wrapper .center{
+  position: absolute;
+  top: 48%;
+  left: 61%;
+  transform: translate(-50%, -50%);
+  font-family: inherit;
+  user-select: none;
+}
+.center h1{
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+.center p{
+  font-size: 22px;
+  font-style: italic;
+  color: white;
+  margin-top: 5%;
+  text-align: center;
+
+}
+
+
+.buttons button{
+  right: 45%;
+  margin-top: 15%;
+  height: 50px;
+  width: 180px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: #F3B340;
+  border: 1px solid #cc0000;
+  outline: none;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: .5s;
+
+}
+
+.buttons button:hover{
+  background: #cc0000;
+
+}

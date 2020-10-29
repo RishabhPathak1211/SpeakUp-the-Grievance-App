@@ -31,6 +31,10 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 def home():
     return render_template('home.html')
 
+@app.route('/aboutUs')
+def about():
+    return render_template('aboutus.html')
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if len(session.values()) == 0:
@@ -102,13 +106,15 @@ def complaintlist(user, category):
 def complaint(user, category, complaint_id):
     if user not in session.values():
         return redirect(url_for('login'))
+    rem_categories = ['Hostel', 'Academics', 'Finance', 'Mess']
+    rem_categories.remove(category)
     comp_lst = []
     mycomp = []
     for x in comps.find({'Institution':user, 'Category':category}):
         comp_lst.append(x)
     for x in comps.find({'_id':ObjectId(complaint_id)}):
         mycomp.append(x)
-    return render_template('complaint.html', category=category, comp_lst=comp_lst, count=counts(comps, user), mycomp=mycomp, user=user)
+    return render_template('complaint.html', category=category, comp_lst=comp_lst, count=counts(comps, user), mycomp=mycomp, user=user, temp=0)
 
 if  __name__ == "__main__":
     app.run()

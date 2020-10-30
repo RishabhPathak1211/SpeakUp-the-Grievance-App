@@ -29,11 +29,11 @@
     <div id="content">
     {% for comps in comp_lst %}    
       <div class="item active">
-        <span class="avatar"></span>
+        <span class="avatar"><h1>{{ initials(comps['name']) }}</h1></span>
         <div class="desc">
-          <h2><a href="{{ url_for('complaint', user=user, category=comps['Category'], complaint_id=comps['_id']) }}">{{ comps['Name'] }}</a></h2>
-          <p>{{ comps['Email'] }}</p>
-          <p>{{ comps['Subject'] }}</p>
+          <h2><a href="{{ url_for('complaint', user=user, category=comps['category'], complaint_id=comps['_id']) }}">{{ comps['name'] }}</a></h2>
+          <p>{{ comps['email'] }}</p>
+          <p>{{ comps['subject'] }}</p>
       </div>
       <span class="time">11:00 PM</span>
     {% endfor %}
@@ -60,48 +60,48 @@
     {% for myc in mycomp %}
     <div class="content">
       <div class="header">
-        <span class="avatar"></span>
-        <span class="name">{{ myc['Name'] }} | {{ myc['Institution'] }}</span>
+        <span class="avatar"><h1>{{ initials(myc['name']) }}</h1></span>
+        <span class="name">{{ myc['name'] }} | {{ myc['institution'] }}</span>
         <span class="time">October 16,2020</span>
       </div>
     </div>
 
     <div class="body">
       <h1></h1>
-      <P><b>{{ myc['Category'] }}</b></p>
-      <p>{{ myc['Subject'] }}</p>
-      <p>{{ myc['Body'] }}</p>
+      <P><b>{{ myc['category'] }}</b></p>
+      <p>{{ myc['subject'] }}</p>
+      <p>{{ myc['body'] }}</p>
     </div>
+
+      {% if myc['status'] == false %}
+      <button class="reply">REPLY</button>
+      <div class="button">
+          <p>Update category</p>
+          <form>
+            <button type="submit" class="Yes" formaction="{{ url_for('confirmed', complaint_id=myc['_id']) }}">No</button>
+          </form>
+          <div class="dropdown">
+                <button class="No">Yes</button>
+                <ul>
+                  {% for cats in rem_cats %}
+                  <li><a href="{{ url_for('changed', complaint_id=myc['_id'], new_category=cats) }}">{{ cats }}</a></li>
+                  {% endfor %}
+                </ul>
+
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script type="text/javascript">
+          $(document).ready(function(){
+            $('button.No').click(function(){
+              $('ul').toggleClass('activess')
+            })
+          })
+      </script>
+      {% endif %}
     {% endfor %}
 
-    {% if temp is defined %}
-    <button class="reply">REPLY</button>
-    <div class="button">
-        <form>
-
-        <p>Update category</p>
-
-        <button class="Yes">No</button>
-        </form>
-        <div class="dropdown">
-              <button class="No">Yes</button>
-              <ul class="activess">
-                <li><a href="#">Academic</a></li>
-                <li><a href="#">Finance</a></li>
-                <li><a href="#">Mess</a></li>
-              </ul>
-
-      </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-          $('button.No').click(function(){
-            $('ul').toggleClass('activess')
-          })
-        })
-    </script>
-    {% endif %}
+    
   </section>
 
 </div>

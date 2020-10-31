@@ -5,6 +5,7 @@ import bcrypt
 import pandas
 import xlrd
 import json
+import datetime
 from text_classification import classify
 
 client = pymongo.MongoClient("mongodb+srv://Rishabh_Pathak_12:speakup@cluster0.agd8b.mongodb.net/ThirdSemProj?retryWrites=true&w=majority")
@@ -31,6 +32,14 @@ def initials(name):
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+@app.template_filter('date')
+def complaint_date(date_time):
+    return date_time.date().strftime('%d %B %Y')
+
+@app.template_filter('time')
+def complaint_time(date_time):
+    return date_time.time()
 
 @app.route('/')
 def home():

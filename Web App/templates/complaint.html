@@ -35,7 +35,7 @@
           <p>{{ comps['email'] }}</p>
           <p>{{ comps['subject'] }}</p>
       </div>
-      <span class="time">11:00 PM</span>
+      <span class="time">{{ comps['date'] | time }}</span>
     {% endfor %}
     </div>
 
@@ -62,7 +62,7 @@
       <div class="header">
         <span class="avatar"><h1>{{ initials(myc['name']) }}</h1></span>
         <span class="name">{{ myc['name'] }} | {{ myc['institution'] }}</span>
-        <span class="time">October 16,2020</span>
+        <span class="time">{{ myc['date'] | date }}</span>
       </div>
     </div>
 

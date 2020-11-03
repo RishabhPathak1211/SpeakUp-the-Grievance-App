@@ -1,30 +1,38 @@
 package Server_Side;
+
 import javax.swing.*;
+import javax.swing.Timer;
+import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.net.*;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
-public class Server extends JFrame implements ActionListener {
+public class Server implements ActionListener {
 
     JPanel P1;
     JTextField t1;
     JButton b1;
-    static JTextArea A1;
+    static JPanel A1;
     static ServerSocket skt;
     static Socket sock;
     static DataInputStream din;
     static DataOutputStream dout;
-    public Server(){
 
+    static JFrame F1= new JFrame();
+
+    static Box vertical = Box.createVerticalBox();
+
+    boolean typing;
+    public Server(){
+        F1.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         P1=new JPanel();
         P1.setLayout(null);
         P1.setBackground(new Color(243,179,64));
         P1.setBounds(0,0,470,70);
-        add(P1);
+        F1.add(P1);
 
 
 
@@ -71,12 +79,42 @@ public class Server extends JFrame implements ActionListener {
         l4.setBounds(70,37,100,20);
         P1.add(l4);
 
+        //adding timer for typing status
+        Timer T1= new Timer(1, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!typing)
+                    l4.setText("Active Now");
+            }
+        });
+        T1.setInitialDelay(2000);
+
+
         //qdding text field
 
         t1= new JTextField();
         t1.setBounds(1,559,390,40);
         t1.setFont(new Font("SAN_SERIF",Font.PLAIN,16));
-        add(t1);
+        F1.add(t1);
+
+        // adding key listener to check for typing status
+        t1.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                l4.setText("typing...");
+                T1.stop();
+                typing=true;
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                typing=false;
+                if (!T1.isRunning())
+                    T1.start();
+            }
+        });
 
         //adding send button
 
@@ -86,43 +124,69 @@ public class Server extends JFrame implements ActionListener {
         b1.setForeground(Color.WHITE);
         b1.setFont(new Font("SAN_SERIF", Font.PLAIN,16));
         b1.addActionListener(this);
-        add(b1);
+        F1.add(b1);
 
         // adding text area to display messages
 
-        A1=new JTextArea();
+        A1=new JPanel();
         A1.setBounds(5,75,460,480);
         A1.setFont(new Font("SAN_SERIF",Font.PLAIN,16));
-        A1.setLineWrap(true);
-        A1.setWrapStyleWord(true);
-        A1.setEditable(false);
-        add(A1);
+
+        F1.add(A1);
 
         /*setting chat box properties*/
 
-        getContentPane().setBackground(new Color(244, 243, 239));
-        setLayout(null);
-        setSize(470,600);
-        setLocation(450,160);
-        setUndecorated(true);
-        setVisible(true);
+        F1.getContentPane().setBackground(new Color(244, 243, 239));
+        F1.setLayout(null);
+        F1.setSize(470,600);
+        F1.setLocation(450,160);
+        F1.setUndecorated(true);
+        F1.setVisible(true);
 
     }
     public void actionPerformed(ActionEvent e){
         try {
             String out = t1.getText();
-            A1.setText(A1.getText() + "\n" + "you: "+out);
+
+            JPanel p2=formatLabel(out);
+            A1.setLayout(new BorderLayout());
+            JPanel right=new JPanel(new BorderLayout());
+            right.add(p2, BorderLayout.LINE_END);
+            vertical.add(right);
+            vertical.add(Box.createVerticalStrut(15));
+
+            A1.add(vertical, BorderLayout.PAGE_START);
+
             dout.writeUTF(out);
             t1.setText("");
         }
         catch(Exception exp){
-
         }
+    }
+    public static JPanel formatLabel(String out){
+        JPanel p3=new JPanel();
+        p3.setLayout(new BoxLayout(p3,BoxLayout.Y_AXIS));
+
+        JLabel l1=new JLabel("<html> <p style=\"width : 150px\">"+out+"</p></html>");
+        l1.setFont(new Font("Tahoma",Font.PLAIN,16));
+        l1.setBackground(new Color(243,179,64));
+        l1.setOpaque(true);
+        l1.setBorder(new EmptyBorder(5,5,5,5));
+
+        Calendar cal= Calendar.getInstance();
+        SimpleDateFormat sdf= new SimpleDateFormat(("HH:mm"));
+
+        JLabel l2= new JLabel();
+        l2.setText(sdf.format(cal.getTime()));
+
+        p3.add(l1);
+        p3.add(l2);
+        return p3;
     }
 
     public static void main(String args[]){
 
-        new Server().setVisible(true);
+        new Server().F1.setVisible(true);
 
         String msginput="";
         try{
@@ -133,14 +197,16 @@ public class Server extends JFrame implements ActionListener {
 
             while (true){
                 msginput= din.readUTF();
-                A1.setText(A1.getText()+"\n"+msginput);
-            }
+                JPanel p2=formatLabel(msginput);
 
-//            skt.close();
-//            sock.close();
+                JPanel left= new JPanel(new BorderLayout());
+                left.add(p2,BorderLayout.LINE_START);
+                vertical.add(left);
+                F1.validate();
+
+            }
         }
         catch (Exception e){
-
         }
     }
 }

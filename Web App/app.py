@@ -13,11 +13,6 @@ db = client['ThirdSemProj']
 comps = db['Complaints']
 dataset = db['Dataset']
 
-for x in comps.find({'category':''}):
-    id_x = x['_id']
-    body = x['body']
-    comps.update_one({'_id':ObjectId(id_x)}, {'$set': {'category':classify(body)}})
-
 def counts(col, user):
     count = {'hostelcount': 0, 'academicscount': 0, 'financecount': 0, 'messcount': 0}
     count['hostelcount'] = col.find({'category':'Hostel', 'institution':user}).count()
@@ -69,7 +64,7 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    return redirect(url_for('home'))
+    return redirect(url_for('login'))
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -105,6 +100,10 @@ def contactUs():
 def complaints(user):
     if user not in session.values():
         return redirect(url_for('login'))
+    for x in comps.find({'institution':user, 'category':''}):
+        id_x = x['_id']
+        body = x['body']
+        comps.update_one({'_id':ObjectId(id_x)}, {'$set': {'category':classify(body)}})
     return render_template('complaint.html', count=counts(comps, user), user=user)
 
 @app.route('/complaint/<user>/<category>')
@@ -146,5 +145,5 @@ def changed(complaint_id, new_category):
         comps.update_one({'_id':ObjectId(complaint_id)}, {'$set': {'category':new_category}})
     return redirect(url_for('complaintlist', user=session['username'], category=x['category']))
 
-if  __name__ == "__main__":
-    app.run()
+# if  __name__ == "__main__":
+    # app.run()

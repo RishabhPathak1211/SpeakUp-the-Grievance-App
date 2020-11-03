@@ -241,6 +241,11 @@ sectione#view div.content{
   padding: 10px;
 }
 
+section#view div.content div.header {
+  padding-left: 10px;
+  padding-top: 15px;
+}
+
 section#view div.content div.header span.avatar {
 
   width:60px;
@@ -308,7 +313,7 @@ section#view .button p
 }
 section#view div.dropdown {
   position: absolute;
-  top: 68.30%;
+  top: 49.25%;
   left: 10%;
   transform: (-50%,-50%);
 }
@@ -323,6 +328,7 @@ section#view button.Yes{
   outline: none;
   cursor: pointer;
   color: #fff;
+  margin-left: 1%;
 }
 
 section#view button.No{
@@ -335,6 +341,7 @@ section#view button.No{
   outline: none;
   cursor: pointer;
   color: #fff;
+  margin-top: 17%;
 }
 section#view div.dropdown ul
 {

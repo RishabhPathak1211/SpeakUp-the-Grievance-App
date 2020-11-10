@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "564045953069",
+    "firebase_url": "https://speakup-ea6c5.firebaseio.com",
+    "project_id": "speakup-ea6c5",
+    "storage_bucket": "speakup-ea6c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564045953069:android:8f08dc327f6ec09d70a0a4",
+        "android_client_info": {
+          "package_name": "com.offenders.speak_up_beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564045953069-pu5iamm31dai5cbnttjkqj0pdedehf86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6TN4vObmqE_OKI9hNQsme6dcWyAWaQaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564045953069-pu5iamm31dai5cbnttjkqj0pdedehf86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

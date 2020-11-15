@@ -33,8 +33,12 @@ dependencies:
   http: ^0.12.2
   logger: ^0.9.4
   flutter_secure_storage: ^3.3.3
+  flutter_webview_plugin: ^0.3.11
+  json_annotation:
 
 dev_dependencies:
+  build_runner:
+  json_serializable:
   flutter_test:
     sdk: flutter
 

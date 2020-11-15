@@ -11,7 +11,6 @@ router.route('/add').post((req, res) => {
     email: req.body.email,
     dept: req.body.dept,
     year: req.body.year,
-    institution: req.body.institution,
     subject: req.body.subject,
     body: req.body.body,
     category: req.body.category,
@@ -26,6 +25,13 @@ router.route('/add').post((req, res) => {
     .catch((err) => {
       res.status(403).json({ msg: err });
     });
+});
+
+router.route('/getComplaints').get(middleware.checkToken, (req, res) => {
+  Complaint.find({ email: req.decoded.email }, (err, result) => {
+    if (err) return res.json(err);
+    return res.json({ data: result });
+  });
 });
 
 module.exports = router;

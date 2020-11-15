@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:speak_up_beta/screens/message.dart';
+import 'package:speak_up_beta/screens/profile_page.dart';
 import 'package:speak_up_beta/screens/welcome_page.dart';
 import '../widgets/resuable_card.dart';
 import '../widgets/icons_generator.dart';
@@ -36,6 +38,13 @@ class _HomePageState extends State<HomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => History()),
+    );
+  }
+
+  gotoMessages(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Messages()),
     );
   }
 
@@ -92,12 +101,12 @@ class _HomePageState extends State<HomePage> {
                 FontAwesomeIcons.user,
                 color: containerColor,
               ),
-              // onTap: () {
-              //   Navigator.push(
-              //     context,
-              //     MaterialPageRoute(builder: (context) => MainProfile()),
-              //   );
-              // },
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MainProfile()),
+                );
+              },
             ),
             ListTile(
               title: Text(
@@ -182,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        selectedCategory = Categories.petition;
+                        gotoHistory(context);
                       });
                     },
                     child: ReusableCard(
@@ -198,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        selectedCategory = Categories.message;
+                        gotoMessages(context);
                       });
                     },
                     child: ReusableCard(

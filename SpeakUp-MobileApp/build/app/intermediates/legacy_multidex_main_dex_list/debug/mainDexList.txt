@@ -59,6 +59,13 @@ androidx/annotation/UiThread.class
 androidx/annotation/VisibleForTesting.class
 androidx/annotation/WorkerThread.class
 androidx/annotation/XmlRes.class
+androidx/appcompat/app/ActionBar$DisplayOptions.class
+androidx/appcompat/app/ActionBar$NavigationMode.class
+androidx/appcompat/app/AppCompatDelegate$NightMode.class
+androidx/appcompat/graphics/drawable/DrawerArrowDrawable$ArrowDirection.class
+androidx/appcompat/view/menu/CascadingMenuPopup$HorizPosition.class
+androidx/appcompat/widget/LinearLayoutCompat$DividerMode.class
+androidx/appcompat/widget/LinearLayoutCompat$OrientationMode.class
 androidx/core/app/CoreComponentFactory$CompatWrapped.class
 androidx/core/app/CoreComponentFactory.class
 androidx/core/app/FrameMetricsAggregator$MetricType.class

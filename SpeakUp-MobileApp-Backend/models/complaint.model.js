@@ -7,7 +7,10 @@ const Complaint = Schema({
   email: String,
   dept: String,
   year: String,
-  institution: String,
+  institution: {
+    type: String,
+    default: 'Bennett University',
+  },
   subject: String,
   body: String,
   category: String,

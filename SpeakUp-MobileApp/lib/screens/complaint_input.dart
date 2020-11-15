@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:speak_up_beta/constants.dart';
+import 'package:speak_up_beta/model/profileModel.dart';
 import 'package:speak_up_beta/network_handler.dart';
-import 'package:speak_up_beta/widgets/complaint_brain.dart';
 
 class ComplaintInput extends StatefulWidget {
   @override
@@ -13,21 +13,35 @@ class ComplaintInput extends StatefulWidget {
 
 class _ComplaintInputState extends State<ComplaintInput> {
   String _dropDownValue;
-  bool circular = false;
-  String subjectValue;
-  String complaintValue;
+
   final mySubjectController = TextEditingController();
   final myComplaintController = TextEditingController();
+
   NetworkHandler networkHandler = NetworkHandler();
+  ProfileModel profileModel = ProfileModel();
+  var now = new DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    var response = await networkHandler.get("/user/getData");
+    setState(() {
+      profileModel = ProfileModel.fromJson(response["data"]);
+    });
+  }
 
   sendComplaint() async {
     if (mySubjectController.text != null && myComplaintController != null) {
       Map<String, String> data = {
-        "name": "Glen Dsouza",
-        "email": "e19cse049@bennett.edu.in",
-        "dept": "CSE",
-        "year": "2019-23",
-        "institution": "Bennett University",
+        "name": profileModel.username,
+        "email": profileModel.email,
+        "dept": profileModel.dept,
+        "year": profileModel.year,
+        "date": now.toIso8601String(),
         "subject": mySubjectController.text,
         "body": myComplaintController.text,
         "category": "",
@@ -156,7 +170,7 @@ class _ComplaintInputState extends State<ComplaintInput> {
               ),
             ),
             SizedBox(
-              height: 280.0,
+              height: 420.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

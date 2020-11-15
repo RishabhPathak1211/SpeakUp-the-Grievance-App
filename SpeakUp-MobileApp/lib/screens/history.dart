@@ -1,14 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:speak_up_beta/constants.dart';
 
+import '../network_handler.dart';
+
 class History extends StatefulWidget {
   @override
   _HistoryState createState() => _HistoryState();
 }
 
 class _HistoryState extends State<History> {
+  var response;
+  List users = [];
+  NetworkHandler networkHandler = NetworkHandler();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    response = await networkHandler.get('/complaint/getComplaints');
+    response = response['data'];
+    print(response);
+    setState(() {
+      users = response;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: containerColor,
@@ -17,99 +39,57 @@ class _HistoryState extends State<History> {
           style: TextStyle(color: widgetColour, fontWeight: FontWeight.bold),
         ),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(8),
-        children: <Widget>[
-          SizedBox(
-            height: 20.0,
-          ),
-          Container(
-            height: 50,
-            color: containerColor,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    '27/09/2020',
-                    style: historyStyle,
-                  ),
-                  Text('Canteen', style: historyStyle),
-                  Text('Solved', style: historyStyle),
-                ],
+      body: ListView.builder(
+        itemCount: users.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              SizedBox(
+                height: 15,
               ),
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Container(
-            height: 50,
-            color: containerColor,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    '28/09/2020',
-                    style: historyStyle,
+              Card(
+                elevation: 5,
+                child: Container(
+                  width: width,
+                  height: 60,
+                  color: containerColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        users[index]['date'].toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: widgetColour,
+                        ),
+                      ),
+                      Text(
+                        users[index]['category'],
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: widgetColour,
+                        ),
+                      ),
+                      Text(
+                        users[index]['status'].toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: widgetColour,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
                   ),
-                  Text('Hostel', style: historyStyle),
-                  Text('Solved', style: historyStyle),
-                ],
+                ),
               ),
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Container(
-            height: 50,
-            color: containerColor,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    '28/09/2020',
-                    style: historyStyle,
-                  ),
-                  Text('Academic', style: historyStyle),
-                  Text('Seen', style: historyStyle),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          Container(
-            height: 50,
-            color: containerColor,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    '28/09/2020',
-                    style: historyStyle,
-                  ),
-                  Text('Academic', style: historyStyle),
-                  Text('Unseen', style: historyStyle),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 280.0,
-          ),
-          Container(
-            color: containerColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: bottomBarHeight,
-          ),
-        ],
+            ],
+          );
+        },
       ),
     );
   }

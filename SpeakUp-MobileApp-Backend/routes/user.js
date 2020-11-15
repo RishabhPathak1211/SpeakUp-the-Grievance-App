@@ -6,15 +6,15 @@ const middleware = require('../middleware');
 
 const router = express.Router();
 
-router.route('/:email').get(middleware.checkToken, (req, res) => {
-  User.findOne({ email: req.params.email }, (err, result) => {
-    if (err) return res.status(500).json({ msg: err });
-    return res.json({
-      username: result['username'],
-      email: req.params.email,
-    });
-  });
-});
+// router.route('/:email').get(middleware.checkToken, (req, res) => {
+//   User.findOne({ email: req.params.email }, (err, result) => {
+//     if (err) return res.status(500).json({ msg: err });
+//     return res.json({
+//       username: result['username'],
+//       email: req.params.email,
+//     });
+//   });
+// });
 
 router.route('/checkemail/:email').get((req, res) => {
   User.findOne({ email: req.params.email }, (err, result) => {

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="chattingapplication:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d865d428-7b6d-4ebb-b8a9-a9593ddfbf06" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +30,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -69,8 +80,8 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Server" />
       <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Server" />
     </list>
     <recent_temporary>
       <list>
@@ -93,10 +104,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="71" key="#Notifications" timestamp="1600763064989">
+    <state x="361" y="71" key="#Notifications" timestamp="1604153762863">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="71" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1600763064989" />
+    <state x="361" y="71" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1604153762863" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600770555998">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -117,22 +128,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1600769877468" />
-    <state width="1492" height="210" key="GridCell.Tab.0.bottom" timestamp="1603880995137">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1604321399897">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603880995137" />
-    <state width="1492" height="210" key="GridCell.Tab.0.center" timestamp="1603880995136">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604321399897" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1604321399897">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603880995136" />
-    <state width="1492" height="210" key="GridCell.Tab.0.left" timestamp="1603880995136">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604321399897" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1604321399897">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603880995136" />
-    <state width="1492" height="210" key="GridCell.Tab.0.right" timestamp="1603880995136">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604321399897" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1604321399897">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1492" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603880995136" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604321399897" />
     <state width="1492" height="261" key="GridCell.Tab.1.bottom" timestamp="1599987886043">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -149,10 +160,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1492" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1599987886043" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1604121250680">
+    <state x="252" y="0" key="SettingsEditor" timestamp="1604325678020">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1604121250680" />
+    <state x="252" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1604325678020" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1604462646575">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1604462646575" />
     <state x="209" y="33" key="new project wizard" timestamp="1599985872071">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

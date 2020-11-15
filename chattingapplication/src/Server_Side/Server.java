@@ -3,6 +3,8 @@ package Server_Side;
 import javax.swing.*;
 import javax.swing.Timer;
 import javax.swing.border.*;
+import javax.swing.plaf.ScrollBarUI;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.*;
@@ -129,10 +131,31 @@ public class Server implements ActionListener {
         // adding text area to display messages
 
         A1=new JPanel();
-        A1.setBounds(5,75,460,480);
         A1.setFont(new Font("SAN_SERIF",Font.PLAIN,16));
+        JScrollPane sp=new JScrollPane(A1);
+        sp.setBounds(5,75,460,480);
 
-        F1.add(A1);
+        sp.setBorder(BorderFactory.createEmptyBorder());
+
+        ScrollBarUI ui=new BasicScrollBarUI(){
+            protected JButton createDecreaseButton(int orientation){
+                JButton button =super.createDecreaseButton(orientation);
+                button.setBackground(new Color(243,179,64));
+                button.setForeground(Color.WHITE);
+                this.thumbColor=new Color(243,179,64);
+                return button;
+            }
+
+            protected JButton createIncreaseButton(int orientation){
+                JButton button =super.createIncreaseButton(orientation);
+                button.setBackground(new Color(7,94,84));
+                button.setForeground(Color.WHITE);
+                this.thumbColor=new Color(7,94,84);
+                return button;
+            }
+        };
+        sp.getVerticalScrollBar().setUI(ui);
+        F1.add(sp);
 
         /*setting chat box properties*/
 
@@ -144,10 +167,11 @@ public class Server implements ActionListener {
         F1.setVisible(true);
 
     }
+
     public void actionPerformed(ActionEvent e){
         try {
             String out = t1.getText();
-
+            Transfer_chat(out);
             JPanel p2=formatLabel(out);
             A1.setLayout(new BorderLayout());
             JPanel right=new JPanel(new BorderLayout());
@@ -163,6 +187,17 @@ public class Server implements ActionListener {
         catch(Exception exp){
         }
     }
+
+    public void Transfer_chat(String text) throws FileNotFoundException{
+        try(FileWriter file=new FileWriter("chat.txt",true);
+            PrintWriter p=new PrintWriter(new BufferedWriter(file));){
+            p.println("Admin: "+text);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public static JPanel formatLabel(String out){
         JPanel p3=new JPanel();
         p3.setLayout(new BoxLayout(p3,BoxLayout.Y_AXIS));

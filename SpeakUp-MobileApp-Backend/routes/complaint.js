@@ -11,6 +11,7 @@ router.route('/add').post((req, res) => {
     email: req.body.email,
     dept: req.body.dept,
     year: req.body.year,
+    institution: req.body.institution,
     subject: req.body.subject,
     body: req.body.body,
     category: req.body.category,

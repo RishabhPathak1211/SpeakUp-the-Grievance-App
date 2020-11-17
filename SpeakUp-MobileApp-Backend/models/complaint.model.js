@@ -11,6 +11,10 @@ const Complaint = Schema({
     type: String,
     default: 'Bennett University',
   },
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
   subject: String,
   body: String,
   category: String,

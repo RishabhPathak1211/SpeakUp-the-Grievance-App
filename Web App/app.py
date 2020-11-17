@@ -10,7 +10,7 @@ from text_classification import classify
 
 client = pymongo.MongoClient("mongodb+srv://Rishabh_Pathak_12:speakup@cluster0.agd8b.mongodb.net/ThirdSemProj?retryWrites=true&w=majority")
 db = client['ThirdSemProj']
-comps = db['Complaints']
+comps = db['complaints']
 dataset = db['Dataset']
 
 def counts(col, user):
@@ -111,7 +111,7 @@ def complaintlist(user, category):
     if user not in session.values():
         return redirect(url_for('login'))
     comp_lst = []
-    for x in comps.find({'institution':user, 'category':category}):
+    for x in comps.find({'institution':user, 'category':category}).sort('date', -1):
         comp_lst.append(x)
     return render_template('complaint.html', category=category, comp_lst=comp_lst, count=counts(comps, user), user=user, initials=initials)
 
@@ -123,7 +123,7 @@ def complaint(user, category, complaint_id):
     rem_categories.remove(category)
     comp_lst = []
     mycomp = []
-    for x in comps.find({'institution':user, 'category':category}):
+    for x in comps.find({'institution':user, 'category':category}).sort('date', -1):
         comp_lst.append(x)
     for x in comps.find({'_id':ObjectId(complaint_id)}):
         mycomp.append(x)

@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
-class Messages extends StatelessWidget {
-  // This widget is the root of your application.
+import '../network_handler.dart';
+
+class Messages extends StatefulWidget {
+  @override
+  _MessagesState createState() => _MessagesState();
+}
+
+class _MessagesState extends State<Messages> {
+  var response;
+  NetworkHandler networkHandler = NetworkHandler();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    response = await networkHandler.get('/user/getData');
+    response = response['data'];
+    print(response['username']);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,7 +33,7 @@ class Messages extends StatelessWidget {
       ),
       routes: {
         "/": (_) => WebviewScaffold(
-              url: "http://10.0.2.2:5000/home/GlenDsouza",
+              url: "http://54a949ac4333.ngrok.io/home/student",
               appBar: AppBar(
                 title: Text("Chat Window"),
               ),

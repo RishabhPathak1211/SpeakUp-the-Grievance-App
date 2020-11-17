@@ -21,6 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController rollNo = new TextEditingController();
   TextEditingController year = new TextEditingController();
   TextEditingController dept = new TextEditingController();
+  TextEditingController college = new TextEditingController();
   TextEditingController emailID = new TextEditingController();
   TextEditingController password = new TextEditingController();
   TextEditingController passwordConfirm = new TextEditingController();
@@ -39,6 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
         "email": emailID.text,
         "year": year.text,
         "dept": dept.text,
+        "college": college.text,
         "password": password.text
       };
       print(data);
@@ -190,6 +192,27 @@ class _SignUpPageState extends State<SignUpPage> {
                     style: TextStyle(color: containerColor),
                     decoration: InputDecoration(
                       hintText: "Department",
+                      hintStyle: TextStyle(
+                        color: containerColor,
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: containerColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40.0,
+                  ),
+                  TextFormField(
+                    validator: (val) {
+                      return val.length < 3 ? "Invalid Dept format" : null;
+                    },
+                    controller: college,
+                    style: TextStyle(color: containerColor),
+                    decoration: InputDecoration(
+                      hintText: "College",
                       hintStyle: TextStyle(
                         color: containerColor,
                       ),

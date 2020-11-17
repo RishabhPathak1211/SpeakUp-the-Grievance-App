@@ -6,6 +6,8 @@ import 'package:speak_up_beta/constants.dart';
 import 'package:speak_up_beta/model/profileModel.dart';
 import 'package:speak_up_beta/network_handler.dart';
 
+import 'home_page.dart';
+
 class ComplaintInput extends StatefulWidget {
   @override
   _ComplaintInputState createState() => _ComplaintInputState();
@@ -50,6 +52,10 @@ class _ComplaintInputState extends State<ComplaintInput> {
       print(data);
       await networkHandler.post("/complaint/add", data);
     }
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
+    );
   }
 
   @override
@@ -170,7 +176,7 @@ class _ComplaintInputState extends State<ComplaintInput> {
               ),
             ),
             SizedBox(
-              height: 420.0,
+              height: 280.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

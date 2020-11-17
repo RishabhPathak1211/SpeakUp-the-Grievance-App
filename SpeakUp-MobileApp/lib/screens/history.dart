@@ -10,6 +10,7 @@ class History extends StatefulWidget {
 
 class _HistoryState extends State<History> {
   var response;
+  String seenStatus;
   List users = [];
   NetworkHandler networkHandler = NetworkHandler();
 
@@ -60,7 +61,7 @@ class _HistoryState extends State<History> {
                         width: 10,
                       ),
                       Text(
-                        users[index]['date'].toString(),
+                        users[index]['date'].toString().substring(0, 10),
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: widgetColour,
@@ -74,7 +75,7 @@ class _HistoryState extends State<History> {
                         ),
                       ),
                       Text(
-                        users[index]['status'].toString(),
+                        users[index]['status'] ? "Seen" : "Not seen",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: widgetColour,

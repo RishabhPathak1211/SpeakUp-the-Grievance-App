@@ -70,6 +70,7 @@ def logout():
 def register():
     if request.method == 'POST':
         users = db['Colleges']
+        students = db['students']
         existing_user = users.find({'name': request.form['username']})
 
         if existing_user.count() == 0:
@@ -77,7 +78,13 @@ def register():
             json_str = uploaded_file.to_json(orient='records')
             student_data = json.loads(json_str)
             for x in student_data:
+                x['Institution'] = request.form['username']
                 x['Password'] = bcrypt.hashpw(x['Password'].encode('utf-8'), bcrypt.gensalt())
+
+            if isinstance(student_data, list):
+                students.insert_many(student_data)
+            else:
+                students.insert_one(student_data)
 
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             users.insert_one({'name': request.form['username'], 'password': hashpass, 'address': request.form['address'], 'student_lst': student_data})
@@ -127,7 +134,8 @@ def complaint(user, category, complaint_id):
         comp_lst.append(x)
     for x in comps.find({'_id':ObjectId(complaint_id)}):
         mycomp.append(x)
-    return render_template('complaint.html', category=category, comp_lst=comp_lst, count=counts(comps, user), mycomp=mycomp, user=user, rem_cats=rem_categories, initials=initials)
+    replylink = 'http://54a949ac4333.ngrok.io/home/' + user
+    return render_template('complaint.html', category=category, comp_lst=comp_lst, count=counts(comps, user), mycomp=mycomp, user=user, rem_cats=rem_categories, initials=initials, replylink=replylink)
 
 @app.route('/confirmed/<complaint_id>')
 def confirmed(complaint_id):
@@ -145,5 +153,5 @@ def changed(complaint_id, new_category):
         comps.update_one({'_id':ObjectId(complaint_id)}, {'$set': {'category':new_category}})
     return redirect(url_for('complaintlist', user=session['username'], category=x['category']))
 
-# if  __name__ == "__main__":
-    # app.run()
+if  __name__ == "__main__":
+    app.run(port=8080)

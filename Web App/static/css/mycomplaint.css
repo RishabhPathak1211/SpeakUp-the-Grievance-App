@@ -118,22 +118,22 @@ input:focus, button:focus {
 
 div#content div.item {
   position: relative;
-
-  border-bottom: 1px solid #ccc;
-
-
-
-
-}
-  div.item::after  {
-  content: "";
   display: block;
-  width: 50%;
+  border-top: 1px solid #F3B340;
   height: 3px;
   background: transparent;
-  box-shadow: 0 2px 1px 0 #F3B340;
+
 
 }
+  /* div.item  {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  box-shadow: 0 -2px 1px 0 #F3B340;
+
+} */
 
 
 div#content div.item span.avatar {
@@ -240,19 +240,21 @@ section#view header .navbar
 sectione#view div.content{
   padding: 10px;
 }
-
-section#view div.content div.header {
-  padding-left: 10px;
-  padding-top: 15px;
+section#view div.content div.header{
+  padding-left: 5px;
+  padding-top: 5px;
 }
 
+
 section#view div.content div.header span.avatar {
+
 
   width:60px;
   height:60px;
   display: inline-block;
   background: #ccc;
   border-radius: 100%;
+
 
 }
 section#view div.content div.header span.avatar h1
@@ -312,8 +314,9 @@ section#view .button p
   color: white;
 }
 section#view div.dropdown {
-  position: absolute;
-  top: 49.50%;
+  position: relative;
+  bottom: 40px;
+  top: 68.30%;
   left: 10%;
   transform: (-50%,-50%);
 }
@@ -328,7 +331,6 @@ section#view button.Yes{
   outline: none;
   cursor: pointer;
   color: #fff;
-  margin-left: 1%;
 }
 
 section#view button.No{
@@ -341,14 +343,13 @@ section#view button.No{
   outline: none;
   cursor: pointer;
   color: #fff;
-  margin-top: 17%;
 }
 section#view div.dropdown ul
 {
-  position: absolute;
+  position: relative;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 9%;
   background: #ccc;
   transform-origin: top;
   transform: perspective(1000px) rotateX(-90deg);

@@ -134,7 +134,7 @@ def complaint(user, category, complaint_id):
         comp_lst.append(x)
     for x in comps.find({'_id':ObjectId(complaint_id)}):
         mycomp.append(x)
-    replylink = 'http://54a949ac4333.ngrok.io/home/' + user
+    replylink = 'http://0dff94103831.ngrok.io/home/' + user
     return render_template('complaint.html', category=category, comp_lst=comp_lst, count=counts(comps, user), mycomp=mycomp, user=user, rem_cats=rem_categories, initials=initials, replylink=replylink)
 
 @app.route('/confirmed/<complaint_id>')

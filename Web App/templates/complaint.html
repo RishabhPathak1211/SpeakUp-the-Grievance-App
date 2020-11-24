@@ -72,9 +72,9 @@
       <p>{{ myc['subject'] }}</p>
       <p>{{ myc['body'] }}</p>
     </div>
-
-      {% if myc['status'] == false %}
       <button class="reply" onclick="window.location.href='{{ replylink }}';">REPLY</button>
+      {% if myc['status'] == false %}
+      
       <div class="button">
           <p>Update category</p>
           <form>
@@ -87,8 +87,7 @@
                   <li><a href="{{ url_for('changed', complaint_id=myc['_id'], new_category=cats) }}">{{ cats }}</a></li>
                   {% endfor %}
                 </ul>
-
-        </div>
+          </div>
       </div>
       <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
       <script type="text/javascript">
